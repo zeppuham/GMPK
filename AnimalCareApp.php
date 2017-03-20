@@ -12,10 +12,7 @@ include_once 'includes/functions.php';
     <link rel="stylesheet" href="styles/main.css" />
     <style>
         #vacCost {
-            visibility: hidden;
-        }
-        #lblVacCost {
-            visibility: hidden;
+            display:none;
         }
     </style>
 </head>
@@ -31,61 +28,63 @@ if (!empty($error_msg)) {
 <form action="<?php echo esc_url($_SERVER['REQUEST_URI']); ?>"
       method="post"
       name="registration_form">
-    <label for="name">Name: </label><input type='text' name="name" id="name" /><br>
-    <label for="address">Address: </label><input type="text" name="address" id="address" /><br>
-    <label for="address2">Address Cont: </label><input type="text" name="address2" id="address2" /><br>
-    <label for="city">City:</label><input type="text" name="city" id="city" /> <br>
-    <label for="state">State: </label><input type="text" name="state" id="state" /><br>
-    <label for="zipCode">Zip Code: </label><input type="text" name="zipCode" id="zipCode" /> <br>
-    <label for="phone">Phone: </label><input type="text" name="phone" id="phone" /><br>
-    <label for="dob">Date of Birth: </label><input type="date" name="dob" id="dob" /><br>
+    <label for="txtName">Name: </label><input type='text' name="txtName" id="txtName" /><br>
+    <label for="txtAddress">Address: </label><input type="text" name="txtAddress" id="txtAddress" /><br>
+    <label for="txtAddress2">Address Cont: </label><input type="text" name="txtAddress2" id="txtAddress2" /><br>
+    <label for="txtCity">City:</label><input type="text" name="txtCity" id="txtCity" /> <br>
+    <label for="txtState">State: </label><input type="text" name="txtState" id="txtState" /><br>
+    <label for="txtZipCode">Zip Code: </label><input type="text" name="txtZipCode" id="txtZipCode" /> <br>
+    <label for="txtPhone">Phone: </label><input type="text" name="txtPhone" id="txtPhone" /><br>
+    <label for="txtDob">Date of Birth: </label><input type="date" name="txtDob" id="txtDob" /><br>
 
 
 
     <h4>Experience and Requirements</h4>
-    <label for="animalExp">Please briefly describe your relevant hands-on experience with animals, if any. What did you enjoy about the experience? What did you dislike? *</label><br>
-    <textarea name="animalExp" class="expReq"></textarea><br>
-    <label for="comfortFood">Carnivorous patients are sometimes unable to eat food items whole due to their injuries; you may be required to cut and divide dead rodents, chicks, and fishes into smaller portions. Are you comfortable handling dead animals for this purpose? *</label><br>
-    <textarea name="comfortFood" class="expReq"></textarea><br>
-    <label for="livePrey">Prior to release from the Wildlife Center, many predatory birds are presented with live mice in order to evaluate their ability to capture prey in a controlled and measurable environment. What is your opinion on using live-prey for this purpose? *</label><br>
-    <textarea name="livePrey" class="expReq"></textarea><br>
-    <label for="outside">Wildlife rehabilitation requires daily outdoor work -- year-round and regardless of weather conditions. Are you able to work outside during all seasons? If not, what are your limitations? *</label><br>
-    <textarea name="outside" class="expReq"></textarea><br>
-    <label for="lift">Are you able to lift 40 pounds on potentially uneven surfaces with minimal assistance? *</label><br>
-    <select name="lift">
+    <label for="txtAnimalExp">Please briefly describe your relevant hands-on experience with animals, if any. What did you enjoy about the experience? What did you dislike? *</label><br>
+    <textarea name="txtAnimalExp" class="expReq"></textarea><br>
+    <label for="txtComfortFood">Carnivorous patients are sometimes unable to eat food items whole due to their injuries; you may be required to cut and divide dead rodents, chicks, and fishes into smaller portions. Are you comfortable handling dead animals for this purpose? *</label><br>
+    <textarea name="txtComfortFood" class="expReq"></textarea><br>
+    <label for="txtLivePrey">Prior to release from the Wildlife Center, many predatory birds are presented with live mice in order to evaluate their ability to capture prey in a controlled and measurable environment. What is your opinion on using live-prey for this purpose? *</label><br>
+    <textarea name="txtLivePrey" class="expReq"></textarea><br>
+    <label for="txtOutside">Wildlife rehabilitation requires daily outdoor work -- year-round and regardless of weather conditions. Are you able to work outside during all seasons? If not, what are your limitations? *</label><br>
+    <textarea name="txtOutside" class="expReq"></textarea><br>
+    <label for="txtLift">Are you able to lift 40 pounds on potentially uneven surfaces with minimal assistance? *</label><br>
+    <select name="txtLift">
         <option>-Select-</option>
         <option value="yes">Yes</option>
         <option value="no">No</option>
     </select><br>
-    <label for="rabies">Are you vaccinated for Rabies? *</label><br>
-    <select name="rabies" onchange="showQ()">
+    <label for="ddlRabies">Are you vaccinated for Rabies? *</label><br>
+    <select name="ddlRabies" id="ddlRabies" onchange="showQ()">
         <option>-Select-</option>
         <option value="yes">Yes</option>
         <option value="no">No</option>
     </select><br>
-    <label for="vacCost" name="lblVacCost" id="lblVacCost">Are you willing to become vaccinated at your own cost? *</label><br>
-    <select name="vacCost" id="vacCost">
-        <option value="yes">Yes</option>
-        <option value="no">No</option>
-    </select><br>
-    <label for="allergies">Please list all food and animal allergies, if any:*</label><br>
-    <textarea name="allergies" class="expReq"></textarea><br>
-    <label for="available">What days of the week are you available, and at what times?*</label><br>
+    <div id="vacCost">
+        <label for="ddlVacCost" name="lblVacCost" id="lblVacCost">Are you willing to become vaccinated at your own cost? *</label><br>
+        <select name="ddlVacCost" id="ddlVacCost">
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
+        </select><br>
+    </div>
+    <label for="txtAllergies">Please list all food and animal allergies, if any:*</label><br>
+    <textarea name="txtAllergies" class="expReq"></textarea><br>
+    <label for="txtAvailable">What days of the week are you available, and at what times?*</label><br>
     <textarea name="available" class="expReq"></textarea><br>
-    <label for="commit">Will you be able to commit to either a six-month or one-year schedule, with at least one shift (four hours) per week? *</label><br>
-    <select name="commit">
+    <label for="ddlCommit">Will you be able to commit to either a six-month or one-year schedule, with at least one shift (four hours) per week? *</label><br>
+    <select name="ddlCommit">
         <option>-Select-</option>
         <option value="yes">Yes</option>
         <option value="no">No</option>
     </select><br>
-    <label for="rights">Do you belong to any animal rights groups (PETA, The Humane Society, etc.)? If so, which ones? *</label><br>
-    <input type="text" name="rights" id="rights" /><br>
-    <label for="learn">What do you hope to learn or accomplish by volunteering at the Wildlife Center of Virginia? *</label><br>
-    <textarea name="learn"></textarea><br>
-    <label for="passion">Please describe an environmental or wildlife-based issue you feel passionately about, and why: *</label><br>
-    <textarea name="passion"></textarea><br>
-    <label for="else">Is there anything else that you’d like us to know about yourself or your experience?	*</label><br>
-    <textarea name="else"></textarea><br>
+    <label for="txtRights">Do you belong to any animal rights groups (PETA, The Humane Society, etc.)? If so, which ones? *</label><br>
+    <input type="text" name="txtRights" id="txtRights" /><br>
+    <label for="txtLearn">What do you hope to learn or accomplish by volunteering at the Wildlife Center of Virginia? *</label><br>
+    <textarea name="txtLearn"></textarea><br>
+    <label for="txtPassion">Please describe an environmental or wildlife-based issue you feel passionately about, and why: *</label><br>
+    <textarea name="txtPassion"></textarea><br>
+    <label for="txtElse">Is there anything else that you’d like us to know about yourself or your experience?	*</label><br>
+    <textarea name="txtElse"></textarea><br>
 
     <h4>Additional Requirements</h4>
     <h5>In order to be considered for a volunteer position, applicants must submit the following additional documents:</h5>
@@ -130,9 +129,8 @@ if (!empty($error_msg)) {
 <p>Return to the <a href="index.php">login page</a>.</p>
 <script>
     function showQ() {
-        if (document.getElementByName('rabies').value = 'no') {
-            document.getElementByName('vacCost').style.visibility = 'visible';
-            document.getElementByName('lblVacCost').style.visibility = 'visible';
+        if (document.getElementById('ddlRabies').value = 'no') {
+            document.getElementById('vacCost').style.display = 'block';
         }
     }
 </script>
