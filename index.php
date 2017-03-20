@@ -24,9 +24,9 @@ if (isset($_GET['error'])) {
 ?>
 <h1>Welcome! Please sign in</h1>
 <form action="includes/process_login.php" method="post" name="login_form">
-    Email: <input type="text" name="email" />
+    Email: <input type="text" name="txtEmail" />
     Password: <input type="password"
-                     name="password"
+                     name="txtPassword"
                      id="password"/>
     <input type="button"
            value="Login"
