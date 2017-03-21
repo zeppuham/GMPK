@@ -1,4 +1,5 @@
 <?php
+//old file
 include_once 'includes/register.inc.php';
 include_once 'includes/functions.php';
 ?>
@@ -133,6 +134,6 @@ if (!empty($error_msg)) {
             document.getElementById('vacCost').style.display = 'block';
         }
     }
-</script>
+    </script>
 </body>
 </html>
