@@ -1,0 +1,12 @@
+<html>
+                    <p>Thank you for your interest in volunteering!</p>
+                    <p>Your account has been created, you can login with the following credentials after you have activated your account by clicking the url below.</p>
+
+                    ------------------------
+                    <label>Username: </label>'.$email.'
+                    ------------------------
+
+                    <p>Please click this link to activate your account: </p>
+                    http://www.zipzeppy.com/verify.php?email='.$email.'&hash='.$hash.'
+
+                    </html>
