@@ -30,17 +30,20 @@ if (isset($_GET['error'])) {
 
             <input type="text" name="txtEmail" placeholder="Email" />
             <input type="password"
-                             name="txtPassword"
-                             id="password"
-                              placeholder="Password"/>
-            <input type="button"
+                 name="txtPassword"
+                 id="password"
+                  placeholder="Password"/>
+            <input type="submit"
                    value="Login"
                    id="profile-form-link"
+                   name="login"
+                   style="background-color:#b8c076;font-family: Bitter, sans-serif;text-transform: uppercase;color: #FFFFFF;cursor:pointer;"
                    onclick="formhash(this.form, this.form.password);" /> <br> <br>
-            <input type="button"
+            <input type="submit"
                    value="Register"
-                   id="register-form-link"
-                   onclick="register.php" /> <br> <br>
+                   name="register"
+                   style="background-color:#b8c076;font-family: Bitter, sans-serif;text-transform: uppercase;color: #FFFFFF;cursor:pointer;"
+                   id="register-form-link" /> <br> <br>
             <p class="message">Return to <a href="http://www.wildlifecenter.org">The Wildlife Center</a> website.</p>
         </form>
     </div>
