@@ -7,12 +7,21 @@ sec_session_start();
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Transport-and-Rescue-Volunteer-Application</title>
-    <link rel="stylesheet" href="styles/main.css" />
+    <title>Transport and Rescue Volunteer Application</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/animate.min.css" rel="stylesheet">
+    <link href="css/lightbox.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
+    <link href="css/responsive.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../styles/register.css">
+    <script src="js/register.js"></script>
 </head>
 <body>
+<div class="page">
+    <div class="form">
 <?php if (login_check($mysqli) == true) : ?>
-
+    <center><img src="../images/text-logo-300.png"></center><br><br>
     <h1>Transport and Rescue Volunteer Application</h1>
     <p>
         Volunteer transporters provide a vital service to both the Wildlife Center of Virginia and the
@@ -34,9 +43,10 @@ sec_session_start();
         echo $error_msg;
     }
     ?>
-    <form action="<?php echo esc_url($_SERVER['REQUEST_URI']); ?>"
+    <form action="../includes/transport-and-rescue-volunteer-application.inc.php"
           method="post"
-          name="formTransport">
+          name="formTransport"
+		  enctype="multipart/form-data">
         <!--
         <label for="txtName">Name: </label><input type='text' name="txtName" id="txtName" /><br>
         <label for="txtAddress">Address: </label><input type="text" name="txtAddress" id="txtAddress" /><br>
@@ -50,7 +60,7 @@ sec_session_start();
         -->
 
         <label for="txtTravelDistance">How far are you willing to travel for transport (i.e., 30-45 miles from your location, to a specific location, etc)? *</label><br>
-        <textarea name="txtTravelDistance" class="expReq"></textarea><br>
+        <textarea name="txtTravelDistance" class="expReq" style="background-color:#ffffff;width:500px;font-size:12px;border:0px;padding:5px;color:#aea9a9;"></textarea><br>
         When are you able to transport animals? * <br>
         <input type="checkbox" name="chkTransportAvail" value="weekdays">
         Weekdays<br>
@@ -101,7 +111,7 @@ sec_session_start();
         <input type="radio" name="radCapture" value="yes">
         Yes, I am willing to help capture animals<br>
         <input type="radio" name="radCapture" value="no">
-        No, I'd prefer to strickly stransport<br>
+        No, I'd prefer to strickly transport<br>
         Transport Guidelines *<br>
         <input type="checkbox" name="chkAcknowledge" value="1">
         I am acknowledging that I have read the transporter guidelines and I promise to abide by
@@ -109,12 +119,31 @@ sec_session_start();
 
         Phone: (540)942-9453	Fax: (540)943-9453	Email: wildlife@wildlifecenter.org
         <br>
-        <input type="button"
-               value="Register"
+        <input type="submit"
+               value="Send Application"
+               name="btnSend"
+			   class="btn btn-success"
+               style="background-color:#b8c076;font-family: Bitter, sans-serif;text-transform: uppercase;color: #FFFFFF;cursor:pointer;"
                onclick="" />
-    </form>
-    <p>Return to the <a href="../index.php">login page</a>.</p>
-    <p>Return to <a href="../index.php">login page</a></p>
+			   
+        <center><p>Return to your <a href="../protected-page.php">Home Page</a>.</p></center>
+        <center><p>Return to the <a href="../index.php">Login Page</a>.</p></center>
+	</form>
+		
+		<?php 
+		//show result after user submits application (success // failure)
+		if ($_SESSION['showSuccess'] == 1){
+            echo "<script type='text/javascript'>alert('Success submitting your Outreach Docent Volunteer Application!')</script>";
+            $_SESSION['showSuccess'] = 0;
+        }
+		if ($_SESSION['showFailure'] == 1){
+            echo "<script type='text/javascript'>alert('Failure submitting your Outreach Docent Volunteer Application. ')</script>";
+            $_SESSION['showFailure'] = 0;
+        }
+    ?>
+    </div>
+</div>
+
 <?php else : ?>
     <p>
         <span class="error">You are not authorized to access this page.</span> Please <a href="../index.php">login</a>.
