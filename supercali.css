@@ -1,9 +1,14 @@
+/* fonts */
+@import url('https://fonts.googleapis.com/css?family=Bitter|Lato');
+
+/* table */
+
 table.grid, table.grid th, table.grid td {
 	border-collapse: collapse;
 	border: 1px solid #000;
 	vertical-align: top;
-	
 }
+
 table.grid {
 	margin: 20px 0px;
 }
@@ -17,7 +22,6 @@ table.grid th {
 }
 
 
-
 table.grid th.cal_top {
 	background: #B0E0E6;
 	font-size: 16pt;
@@ -27,93 +31,136 @@ table.grid td {
 	background: #FFF;
 }
 
-
+/* body */
 
 BODY {
-	font: 12px Arial, Helvetica, sans-serif;
-	background-color : #F0FFF0;
-	color: #000;
+	font-family: "Lato", serif;
+	font-size: 12px;
+	background-color: #d3d7ae;
+	color: #3c323a;
 	margin: 0px;
 }
 
-A {
-	color: #369;
+a {
+  font-family: "Lato", serif;
+  text-transform: uppercase;
+  text-align:right;
+  width: 100%;
+  padding: 4px;
+  background-color:transparent;
+  color: #faf9e7;
+  font-size: 14px;
+  -webkit-transition: all 0.3 ease;
+  transition: all 0.3 ease;
+  cursor: pointer;
 }
+
 .top_nav {
 	float: right;
 }
+
 .top {
-	background-color : #B0E0E6;
-	color: #000;
-	padding: 10px;
-	border-bottom: 1px solid #000;
+	background-image: url("../images/website-background.png");
+	no-repeat center center fixed; 
+  		-webkit-background-size: cover;
+ 		-moz-background-size: cover;
+  		-o-background-size: cover;
+ 	background-repeat: no repeat;
+ 	background-size: cover;
+ 	font-family: 'Lato', sans-serif;
+ 	font-size: 14px;
+ 	color: #3c323a;
+ 	padding:30px;
+	border-bottom: 10px solid #3c323a;
+	height: 80px;
 }
 
 .nav {
-	background-color : #ffe4b5;
-	color: #000;
+	background-color : #3c323a;
+	color: #b8c076;
 	padding: 0px 10px;
-	border-bottom: 1px solid #000;
-	line-height: 30px;
+	border-bottom: 10px solid #3c323a;
+	line-height: 50px;
+	font-family: 'Lato', sans-serif;
+	font-size: 14px;
 }
 .top A, .nav A, .cal_top A, .bottom A {
-	color: #036;
+	background-color: #3c323a;
+	color: #faf9e7;
 	text-decoration: none;
+	padding-top:30px;
 }
+
 .nav A, .cal_top A {
 	color: #c60;
+	background-color: transparent;
 }
 .nav A {
 	padding: 2px;
 }
 .nav A.selected {
-	background: #ffc;
-	color: #000;
+	background: #b8c076;
+	color: #faf9e7;
 }
+
 .bottom {
 	clear: left;
-	background-color : #B0E0E6;
-	color: #000;
+	background-color : #3c323a;
+	color: #faf9e7;
 	padding: 5px 10px;
-	border-top: 1px solid #000;
-	border-bottom: 1px solid #000;
+	border-top: 1px solid #3c323a;
+	border-bottom: 1px solid #3c323a;
 }
 
 .top h1 {
 	margin: 0em;
 	padding: 0em;
 }
+
 .content {
 	padding: 10px;
+	background-color:#b8c076;
+	font-family: 'Lato', sans-serif;
 }
 .content .item {
 	padding: 2px;
 }
+
 h1 {
-	font-size: 18pt;	
+	font-size: 20pt;
+	font-family: 'Lato', sans-serif;
 }
+
 h2 {
 	font-size: 16pt;	
+	font-family: 'Lato', sans-serif;
 }
+
 h3 {
 	font-size: 14pt;	
+	font-family: 'Lato', sans-serif;
 }
+
 h4 {
 	font-size: 12pt;
+	 font-family: 'Lato', sans-serif;
 	margin: 0em;
 	padding: 0em;
 }
 input {
 	font-size: 10pt;
+	font-family: 'Lato', sans-serif;
 }
 .element {
 	float: left;
 	margin-right: 20px;
 	margin-bottom: 20px;
+	font-family: 'Lato', sans-serif;
 }
 form {
 	margin: 0em;
 	padding: 0em;
+	font-family: 'Lato', sans-serif;
 }
 .morning {
 	background: #ffc;
@@ -168,7 +215,7 @@ form.top_form {
 	float: right;
 	font-size: 14pt;
 	font-weight: bold;
-	color:#999;
+	color:#3c323a;
 }
 
 
@@ -181,11 +228,12 @@ td, th {
 }
 .sidebar {
 	width: 300px;
-	border: 1px solid #000;
-	background: #fff;
+	border: 3px solid #3c323a;
+	background: #faf9e7;
 	padding: 5px;
 	float:right;
 }
+
 /* Added v0.4.0 */
 
 .day_of_month_s {
@@ -193,8 +241,23 @@ td, th {
 	float: right;
 	color:#999;
 }
+
+table.grid {
+	float:center;
+	margin: 0 auto;
+	border: 3px solid #3c323a;
+}
+
+table.grid th {
+    background: #b0e0e6;
+}
+
+table.grid th.cal_top {
+	background-color: #b8c076;
+}
+
 table.grid th.cal_top_s {
-	background: #B0E0E6;
+	background-color: #b8c076;
 }
 
 .button {
@@ -205,39 +268,41 @@ table.grid th.cal_top_s {
 .button div {
 	width:10px;
 	height:10px;
-	border:1px solid #000;
+	border:3px solid #3c323a;
 }
+
 table.grid td.holder {
 	 vertical-align:top;
-	 border: 0px solid #fff;
+	 border: 0px solid #faf9e7;
 	 padding: 5px;
 }
 /* Added v0.4.1 */
 .cell {
-	height:29px;
-	border-bottom: 1px dashed #ccc;
-	color: #999;
+	height: 35px;
+	border-bottom: 1px dashed #3c323a;
+	color: #3c323a;
 }
 .cell_top {
-	background: #ffe4b5;
-	height:24px;
-	border-bottom: 1px solid #000;
-	font-weight:bold;
-	text-align:center;
+	background-color: #d3d7ae;
+	height: 24px;
+	border-bottom: 1px solid #3c323a;
+	font-weight: bold;
+	text-align: center;
 	padding-top: 5px;
 }
 .date {
     position: absolute;
-    border: 1px solid #000;
-    background-color : #fff;
+    border: 3px solid #3c323a;
+    background-color : #faf9e7;
     z-index: 1;
     overflow-y: hidden;    /* changed from auto because I didn't want the scroll bar */
     overflow-x: hidden;    /* added to allow IE to size the width of the event properly */
     margin: 0px;
 }
+	
 .wrap{
-width: 100%;
-clear: both;
+	width: 100%;
+	clear: both;
 }
 
 #dates {
@@ -250,17 +315,18 @@ clear: both;
 	padding: 0px 2px;
 	font-size: 6pt;
 }
+
 .frame {
-	background: #fff;
-	border: 1px solid #000;
+	background-color: #d3d7ae;
+	border: 3px solid #3c323a;
 }
 
 div.cal_top {
-	background: #B0E0E6;
-	font-size: 16pt;
+	background-color: #d3d7ae;
+	font-size: 16px;
 	font-weight:bold;
 	text-align:center;
-	border-bottom: 1px solid #000;
+	border-bottom: 3px solid #3c323a;
 }
 .single_day_frame {
 	position:relative;
@@ -280,7 +346,7 @@ div.cal_top {
 
 .day_of_week {
 	height: 1440px;
-	border-left: 1px solid #000;
+	border-left: 3px solid #3c323a;
 	position: absolute;
 }
 #today {
@@ -290,8 +356,15 @@ div.cal_top {
 	color: #999;
 	text-decoration: none;
 }
+
+th.cal_top {
+	background-color: #b8c076;
+	color: #3c323a;
+	text-decoration: none;
+}
+
 th.cal_top_s a {
-	color: #000;
+	color: #3c323a;
 	text-decoration: underline;
 }
 table.day {
@@ -302,14 +375,14 @@ table.day {
 	margin: 0px;
 }
 table.day th {
-	background: #ffe4b5;
-	border-right: 1px solid #000;
-	border-bottom: 1px solid #000;
-	border-left: 1px solid #000;
+	background-color: #d3d7ae;
+	border-right: 1px solid #3c323a;
+	border-bottom: 1px solid #3c323a;
+	border-left: 1px solid #3c323a;
 	padding: 5px;
 }
 td.single_day {
-	border-left: 1px solid #000;
+	border-left: 1px solid #3c323a;
 }
 .week {
 	clear: right;
@@ -320,7 +393,7 @@ td.single_day {
 	color:#999;
 }
 .cell_top a {
-	color: #000;
+	color: #3c323a;
 	text-decoration: underline;
 }
 
