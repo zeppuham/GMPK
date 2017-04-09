@@ -1,9 +1,7 @@
 <?php
 include_once '/includes/db_connect.php';
 include '/includes/functions.php';
-
 sec_session_start();
-
 ?>
 
 <!DOCTYPE html>
@@ -33,22 +31,24 @@ sec_session_start();
 
         $email= $_SESSION['email'];
 
-        if ($stmt = $mysqli->prepare("SELECT FirstName, LastName, Phone, Street, CityCounty, StateAbb, ZipCode, EmergencyContactFirstName, EmergencyContactLastName, EmergencyContactRelationship, EmergencyContactEmail, EmergencyContactPhone, Allergies, Limitations, dateofBirth 
+        if ($stmt = $mysqli->prepare("SELECT FirstName, LastName, Phone, Street, CityCounty, State, ZipCode, EmergencyContactFirstName, EmergencyContactLastName, EmergencyContactRelationship, EmergencyContactEmail, EmergencyContactPhone, Allergies, Limitations, dateofBirth, profile_picture 
 				  FROM members 
                                   WHERE email = ? LIMIT 1")) {
             $stmt->bind_param('s', $email);  // Bind "$email" to parameter.
             $stmt->execute();    // Execute the prepared query.
             $stmt->store_result();
             // get variables from result.
-            $stmt->bind_result($fName, $lName, $phone, $street, $cityCounty, $state, $zip, $emFName, $emLName, $emRelation, $emEmail, $emPhone, $allergies, $limitations, $DOB);
+            $stmt->bind_result($fName, $lName, $phone, $street, $cityCounty, $state, $zip, $emFName, $emLName, $emRelation, $emEmail, $emPhone, $allergies, $limitations, $DOB, $profilePicture);
             $stmt->fetch();
+			$profilePicture = substr($profilePicture, 19);
         }
         ?>
         <a href="editProf.php"><input type="button"
                value="Edit Profile"
                class="btn btn-success"
                style="background-color:#b8c076;font-family: Bitter, sans-serif;text-transform: uppercase;color: #FFFFFF;cursor:pointer;" /></a>
-        <h2>Basic Information</h2>
+        <img src="<?php echo $profilePicture; ?>" alt="Profile Picture" style="width:304px;height:228px;">
+		<h2>Basic Information</h2>
 
         <label for="profFName">First Name: </label>
         <input type="text" name="profFName"  value="<?php echo $fName; ?>" readonly /> <br>
@@ -101,6 +101,11 @@ sec_session_start();
         <center> <p class="message">Return to <a href="http://wildlifecenter.org/">The Wildlife Center</a> website.</p> </center>
 
     </div>
+	<?php if ($_SESSION['showSuccess'] == 1){
+            echo "<script type='text/javascript'>alert('Success updating your profile information!')</script>";
+            $_SESSION['showSuccess'] = 0;
+        }
+        ?>
 </div>
 
 <?php endif; ?>
