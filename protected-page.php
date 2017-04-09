@@ -2,6 +2,7 @@
 include_once '/includes/db_connect.php';
 include '/includes/functions.php';
 sec_session_start();
+error_reporting(-1);
 
 //move this block of code to a .inc page for easier viewing? had errors so placed the code here for now
 //set times
@@ -11,7 +12,7 @@ if (isset($_POST['btnSubmitTime'])){
     $start = $_POST['txtStartTime'];
     $end = $_POST['txtEndTime'];
     $user_id = $_SESSION['user_id'];
-    if ($insertStmt = $mysqli->prepare("INSERT INTO volunteer_time (start_time, end_time, volunteer_date, id) VALUES (?, ?, ?, ?)")) {
+    if ($insertStmt = $mysqli->prepare("INSERT INTO volunteer_time (start_time, end_time, volunteer_date, user_id) VALUES (?, ?, ?, ?)")) {
         $insertStmt->bind_param('ssss', $start, $end, $date, $user_id);
 
         // Execute the prepared query.
@@ -23,12 +24,13 @@ if (isset($_POST['btnSubmitTime'])){
     }
     $_POST = array();
 }
-
 ?>
 
 <!DOCTYPE html>
 <html>
 <head>
+	<!-- this meta tag auto logs out the user after inactivity -->
+	<META HTTP-EQUIV="refresh" CONTENT="600;URL=index.php?timeout"> 
     <meta charset="UTF-8">
     <title>Volunteer Portal</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -39,7 +41,7 @@ if (isset($_POST['btnSubmitTime'])){
     <link href="css/responsive.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="styles/register.css">
     <script src="js/register.js"></script>
-
+    <meta content='width=device-width, initial-scale=1' name='viewport'/>
     <style>
         ul {
             list-style-type: none;
@@ -117,7 +119,7 @@ if (isset($_POST['btnSubmitTime'])){
     <ul>
         <li><a href="profile.php">Profile </a></li>
         <li><a href="hours-page.php">Hours Logged</a></li>
-        <li><a href="">Calendar</a></li>
+        <li><a href="/supercali-1.0.8/supercali-1.0.8/index.php">Calendar</a></li>
         <li class="dropdown">
             <a href="javascript:void(0)" class="dropbtn">Opportunities</a>
             <div class="dropdown-content">
@@ -143,6 +145,7 @@ if (isset($_POST['btnSubmitTime'])){
     </form>
 
     <center><p>Return to <a href="index.php">Login Page</a></p></center>
+	
 <?php else : ?>
     <p>
         <span class="error">You are not authorized to access this page.</span> Please <a href="index.php">login</a>.
