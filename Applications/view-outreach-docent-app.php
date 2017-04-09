@@ -32,9 +32,26 @@ sec_session_start();
     <div class="form">
         <center><img src="../images/text-logo-300.png"></center><br><br>
         <h1>Outreach Volunteer Application</h1>
-    <form action="../includes/Outreach-Docent-Volunteer-Application.inc.php"
-          method="post"
-		  enctype="multipart/form-data">
+		
+		<?php
+        if (!empty($error_msg)) {
+            echo $error_msg;
+        }
+
+        $userEmail= $_GET['userEmail'];
+
+        if ($stmt = $mysqli->prepare("SELECT availability, interest1, interest2, interest3, interest4
+				  FROM outreach_app 
+                                  WHERE userEmail = ? LIMIT 1")) {
+            $stmt->bind_param('s', $userEmail);  // Bind "$email" to parameter.
+            $stmt->execute();    // Execute the prepared query.
+            $stmt->store_result();
+            // get variables from result.
+            $stmt->bind_result($availability, $interest1, $interest2, $interest3, $interest4);
+            $stmt->fetch();
+        }
+        ?>
+
         <!--
         <label for="txtName">Name: </label><input type='text' name="txtName" id="txtName" /><br>
         <label for="txtAddress">Address: </label><input type="text" name="txtAddress" id="txtAddress" /><br>
@@ -48,49 +65,38 @@ sec_session_start();
         <textarea name="txtAllergies" class="expReq" style="background-color:#ffffff;width:500px;font-size:12px;border:0px;padding:5px;color:#aea9a9;"></textarea><br>
         -->
 		Availability * <br>
-        <input type="checkbox" name="chkAvailability[]" value="Monday">
-        Monday<br>
-        <input type="checkbox" name="chkAvailability[]" value="Tuesday">
-        Tuesday<br>
-        <input type="checkbox" name="chkAvailability[]" value="Wednesday">
-        Wednesday<br>
-        <input type="checkbox" name="chkAvailability[]" value="Thursday">
-        Thursday<br>
-        <input type="checkbox" name="chkAvailability[]" value="Friday">
-        Friday<br>
-        <input type="checkbox" name="chkAvailability[]" value="Saturday">
-        Saturday<br>
-        <input type="checkbox" name="chkAvailability[]" value="Sunday">
-        Sunday<br>
+		<textarea name="txtAvailability" class="expReq" style="background-color:#ffffff;width:500px;font-size:12px;border:0px;padding:5px;color:#aea9a9;" readonly><?php echo $availability ?></textarea><br>
 
         <strong>Interests and Experience</strong><br>
         <label for="txtInterest1">Why are you interested in volunteering as an outreach docent? *</label><br>
-        <textarea name="txtInterest1" class="expReq" style="background-color:#ffffff;width:500px;font-size:12px;border:0px;padding:5px;color:#aea9a9;"></textarea><br>
+        <textarea name="txtInterest1" class="expReq" style="background-color:#ffffff;width:500px;font-size:12px;border:0px;padding:5px;color:#aea9a9;" readonly><?php echo $interest1 ?></textarea><br>
         <label for="txtInterest2">What’s an environmental or wildlife issue you feel passionately about, and why? *</label><br>
-        <textarea name="txtInterest2" class="expReq" style="background-color:#ffffff;width:500px;font-size:12px;border:0px;padding:5px;color:#aea9a9;"></textarea><br>
+        <textarea name="txtInterest2" class="expReq" style="background-color:#ffffff;width:500px;font-size:12px;border:0px;padding:5px;color:#aea9a9;" readonly><?php echo $interest2 ?></textarea><br>
         <label for="txtInterest3">Do you have prior experience speaking to the public? Please describe.  *</label><br>
-        <textarea name="txtInterest3" class="expReq" style="background-color:#ffffff;width:500px;font-size:12px;border:0px;padding:5px;color:#aea9a9;"></textarea><br>
+        <textarea name="txtInterest3" class="expReq" style="background-color:#ffffff;width:500px;font-size:12px;border:0px;padding:5px;color:#aea9a9;" readonly><?php echo $interest3 ?></textarea><br>
         <label for="txtInterest4">What do you think you’d bring to the outreach volunteer team?  *</label><br>
-        <textarea name="txtInterest4" class="expReq" style="background-color:#ffffff;width:500px;font-size:12px;border:0px;padding:5px;color:#aea9a9;"></textarea><br><br>
+        <textarea name="txtInterest4" class="expReq" style="background-color:#ffffff;width:500px;font-size:12px;border:0px;padding:5px;color:#aea9a9;" readonly><?php echo $interest4 ?></textarea><br><br>
 
         <h4>Additional Requirements</h4>
-        <h5>In order to be considered for a volunteer position, applicants must submit the following additional documents:</h5>
-        <ul>
-            <li>Resume or CV: This should include information about your education and relevant work history. </li>
-            <li>Letter of Recommendation: The letter should be sent directly from your reference.</li>
-        </ul>
-        <input type="file" name="resumeFile" id="resumeFile">
-        <input type="file" name="recommendFile" id="recommendFile">
+     
         <br>
-        <input type="submit"
-               value="Send Application"
-               name="btnSend"
-			   class="btn btn-success"
-               style="background-color:#b8c076;font-family: Bitter, sans-serif;text-transform: uppercase;color: #FFFFFF;cursor:pointer;"
-               onclick="" />
-		<center><p>Return to your <a href="../protected-page.php">Home Page</a>.</p></center>
+		
+        <form action="includes/processOutreachApp.php?userEmail=<?php echo $userEmail?>" method="POST">
+			<input type="submit"
+				   value="Approve"
+				   name="btnApprove"
+				   class="btn btn-success"
+				   style="background-color:#b8c076;font-family: Bitter, sans-serif;text-transform: uppercase;color: #FFFFFF;cursor:pointer;" />
+				   
+		   <input type="submit"
+				   value="Reject"
+				   name="btnReject"
+				   class="btn btn-success"
+				   style="background-color:#b8c076;font-family: Bitter, sans-serif;text-transform: uppercase;color: #FFFFFF;cursor:pointer;" />
+	    </form>
+		
+		<center><p>Return to your <a href="../leadPortal.php">Team Lead Portal</a>.</p></center>
         <center><p>Return to the <a href="../index.php">Login Page</a>.</p></center>
-    </form>
 	
 	<?php 
 		if ($_SESSION['showSuccess'] == 1){
@@ -104,13 +110,7 @@ sec_session_start();
     ?>
     </div>
 </div>
-    <script>
-        function showQ() {
-            if (document.getElementById('ddlRabies').value = 'no') {
-                document.getElementById('vacCost').style.display = 'block';
-            }
-        }
-    </script>
+  
 <?php else : ?>
     <p>
         <span class="error">You are not authorized to access this page.</span> Please <a href="../index.php">login</a>.
