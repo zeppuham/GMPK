@@ -229,6 +229,10 @@ body {
             box-shadow: 2px 2px 4px #888;
             display: inline-block;
         }
+        
+        .speech img {
+        max-width:80px;
+        }
 
     </style>
 </head>
@@ -274,7 +278,7 @@ body {
     </p>
 
     
-<p class="speech">Click on the applications you are interested in to apply to volunteer. Don't forget to complete your profile too!<br><br><img src="images/bear.png" width="60px"></p>
+<p class="speech">Click on the applications you are interested in to apply to volunteer. Don't forget to complete your profile too!<br><br><img src="images/bear.png"></p>
 
     </div>
     </div>
