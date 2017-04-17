@@ -31,14 +31,14 @@ sec_session_start();
 
         $email= $_SESSION['email'];
 
-        if ($stmt = $mysqli->prepare("SELECT FirstName, LastName, Phone, Street, CityCounty, State, ZipCode, EmergencyContactFirstName, EmergencyContactLastName, EmergencyContactRelationship, EmergencyContactEmail, EmergencyContactPhone, Allergies, Limitations, dateofBirth, profile_picture 
+        if ($stmt = $mysqli->prepare("SELECT FirstName, LastName, Phone, Street, CityCounty, State, ZipCode, carpentrySkill, EmergencyContactFirstName, EmergencyContactLastName, EmergencyContactRelationship, EmergencyContactEmail, EmergencyContactPhone, Allergies, Limitations, dateofBirth, profile_picture 
 				  FROM members 
                                   WHERE email = ? LIMIT 1")) {
             $stmt->bind_param('s', $email);  // Bind "$email" to parameter.
             $stmt->execute();    // Execute the prepared query.
             $stmt->store_result();
             // get variables from result.
-            $stmt->bind_result($fName, $lName, $phone, $street, $cityCounty, $state, $zip, $emFName, $emLName, $emRelation, $emEmail, $emPhone, $allergies, $limitations, $DOB, $profilePicture);
+            $stmt->bind_result($fName, $lName, $phone, $street, $cityCounty, $state, $zip, $carp, $emFName, $emLName, $emRelation, $emEmail, $emPhone, $allergies, $limitations, $DOB, $profilePicture);
             $stmt->fetch();
 			$profilePicture = substr($profilePicture, 19);
         }
@@ -47,7 +47,7 @@ sec_session_start();
                value="Edit Profile"
                class="btn btn-success"
                style="background-color:#b8c076;font-family: Bitter, sans-serif;text-transform: uppercase;color: #FFFFFF;cursor:pointer;" /></a>
-        <img src="<?php echo $profilePicture; ?>" alt="Profile Picture" style="width:304px;height:228px;">
+        <img src="<?php echo $profilePicture; ?>" alt="Profile Picture" style="width:200px;height:228px;">
 		<h2>Basic Information</h2>
 
         <label for="profFName">First Name: </label>
@@ -73,6 +73,10 @@ sec_session_start();
 
         <label for="profDOB">Date of Birth: </label>
         <input type="text" name="profDOB"  value="<?php echo $DOB; ?>" readonly /> <br>
+		
+		<label for="profCarpentry">Carpentry Skill: </label>
+		<input type="text" name="profCarpentry"  value="<?php echo $carp; ?>" readonly /> <br>
+		
 
         <h2>Emergency Contact Information</h2>
         <label for="profEmFName">Contact's First Name: </label>

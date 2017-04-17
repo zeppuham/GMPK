@@ -5,10 +5,11 @@
 	sec_session_start(); // Our custom secure way of starting a PHP session.
 	if(isset($_POST['btnApprove'])){
 		$userEmail = $_GET['userEmail'];
+		$comments = $_POST['txtComments'];
 		
-		if ($stmt2 = $mysqli->prepare("UPDATE outreach_app SET accepted=1 
+		if ($stmt2 = $mysqli->prepare("UPDATE outreach_app SET accepted=1, comments=?
                                   WHERE userEmail = ? LIMIT 1")) {
-			$stmt2->bind_param('s', $userEmail);
+			$stmt2->bind_param('ss', $comments, $userEmail);
 			$stmt2->execute();
 
 			if (!$stmt2->execute()) {
@@ -21,8 +22,8 @@
 			$subject = "Your Volunteer Application has been Accepted!";
 			
 			$message="Congratulations! We received your application and would love to have you as a volunteer at the Virginia Wildlife Center.  One of our team leads will be in touch soon.";
-			$message.="Have a wonderful day!";
-			$message.="~The Wildlife Team";
+			$message.="  Have a wonderful day!";
+			$message.="  ~The Wildlife Team";
 			
 			sendEmail($userEmail, $subject, $message);
 			

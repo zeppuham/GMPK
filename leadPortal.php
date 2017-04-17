@@ -30,7 +30,7 @@ if (isset($_POST['btnSubmitTime'])){
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Volunteer Portal</title>
+    <title>Team Lead Portal</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/font-awesome.min.css" rel="stylesheet">
     <link href="css/animate.min.css" rel="stylesheet">
@@ -119,18 +119,11 @@ if (isset($_POST['btnSubmitTime'])){
     <div class="form">
     <center><img src="images/text-logo-300.png"></center><br><br>
     <ul>
-        <li><a href="profile.php">Profile </a></li>
+        <li><a href="leadProfile.php">Profile </a></li>
         <li><a href="hours-page.php">Hours Logged</a></li>
         <li><a href="/supercali-1.0.8/supercali-1.0.8/index.php">Calendar</a></li>
-        <li class="dropdown">
-            <a href="javascript:void(0)" class="dropbtn">Applications</a>
-            <div class="dropdown-content">
-                <a href="Applications/transport-and-rescue-volunteer-application.php">Transport & Rescue</a>
-                <a href="Applications/animalCareApps.php">Animal Care</a>
-                <a href="Applications/outreach-docent-volunteer-application.php">Outreach Docent</a>
-                <a href="Applications/treatment-team-volunteer-application.php">Treatment Team</a>
-            </div>
-        </li>
+		<li><a href="announcement.php">Send Announcement</a></li>
+		<li><a href="find-volunteers.php">Find Volunteers</a></li>
     </ul>
 
     <br><br>
@@ -141,13 +134,40 @@ if (isset($_POST['btnSubmitTime'])){
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h4 class="panel-title">
-                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">Treatment & Rescue</a>
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">Transport & Rescue</a>
                     </h4>
                 </div>
                 <div id="collapse1" class="panel-collapse collapse in">
                     <div class="panel-body">
+						<?php 
+							$leadQuery=mysqli_query($mysqli, "SELECT userEmail, accepted FROM transport_app");
 
-
+							if (!$leadQuery) {
+								printf("Error: %s\n", mysqli_error($mysqli));
+								exit();
+							}
+							echo "<table border='1'>
+							<tr>
+							<th>Email</th>
+							<th>Application Status</th>
+							</tr>";
+							while($row=mysqli_fetch_array($leadQuery)) {
+								$status = $row['accepted'];
+								if ($status == 2){
+									$option = 'Rejected';
+								} elseif ($status == 1){
+									$option = 'Accepted';
+								} else {
+									$option = 'Pending';
+								}
+								echo "<tr>";
+								echo "<td><a href='Applications/view-transport-and-rescue-app.php?userEmail=" . $row['userEmail'] .  "'>" . $row['userEmail'] . "</a></td>";
+								echo "<td>" . $option . "</td>";
+								echo "</tr>";
+							}
+							echo "</table>";
+						
+						?>
                     </div>
                 </div>
             </div>

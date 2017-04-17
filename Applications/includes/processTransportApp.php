@@ -7,7 +7,7 @@
 		$userEmail = $_GET['userEmail'];
 		$comments = $_POST['txtComments'];
 		
-		if ($stmt2 = $mysqli->prepare("UPDATE animal_care_app SET accepted=1, comments=?
+		if ($stmt2 = $mysqli->prepare("UPDATE transport_app SET accepted=1, comments=?
                                   WHERE userEmail = ? LIMIT 1")) {
 			$stmt2->bind_param('ss', $comments, $userEmail);
 			$stmt2->execute();
@@ -22,15 +22,15 @@
 			$subject = "Your Volunteer Application has been Accepted!";
 			
 			$message="Congratulations! We received your application and would love to have you as a volunteer at the Virginia Wildlife Center.  One of our team leads will be in touch soon.";
-			$message.="Have a wonderful day!";
-			$message.="~The Wildlife Team";
+			$message.="  Have a wonderful day!";
+			$message.="  ~The Wildlife Team";
 			
 			sendEmail($userEmail, $subject, $message);
 			
 			header("Location: ../../leadPortal.php");
 		}
 		
-		if ($stmt = $mysqli->prepare("UPDATE members SET volunteer=1 
+		if ($stmt = $mysqli->prepare("UPDATE members SET volunteer=1
                                   WHERE email = ? LIMIT 1")) {
 			$stmt->bind_param('s', $userEmail);
 			$stmt->execute();
@@ -46,9 +46,10 @@
 	
 	if(isset($_POST['btnReject'])){
 		$userEmail = $_GET['userEmail'];
-		if ($stmt2 = $mysqli->prepare("UPDATE animal_care_app SET accepted=2 
+		$comments = $_POST['txtComments'];
+		if ($stmt2 = $mysqli->prepare("UPDATE transport_app SET accepted=2, comments=? 
                                   WHERE userEmail = ? LIMIT 1")) {
-			$stmt2->bind_param('s', $userEmail);
+			$stmt2->bind_param('ss', $comments, $userEmail);
 			$stmt2->execute();
 
 			if (!$stmt2->execute()) {
@@ -69,5 +70,4 @@
 		}
 		
 	}
-
 ?>

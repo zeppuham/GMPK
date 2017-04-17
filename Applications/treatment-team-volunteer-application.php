@@ -16,161 +16,157 @@ sec_session_start();
         <link href="css/responsive.css" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="../styles/register.css">
         <script src="js/register.js"></script>
-        
-     <style>
-        
-/* fonts */
-@import url('https://fonts.googleapis.com/css?family=Bitter|Lato');
-
-/* body */
-
-body {
-	background-image: url("images/website-background.png");
-	no-repeat center center fixed; 
-  		-webkit-background-size: cover;
- 		-moz-background-size: cover;
-  		-o-background-size: cover;
- 	background-repeat: no repeat;
- 	background-size: cover;
- 	font-family: 'Lato', sans-serif;
- 	font-size: 14px;
- 	color: #3c323a;
-}
-
-.page {
-  width: 600px;
-  padding: 8% 0 0;
-  margin: auto;
-}
-
-.image {
-  position: absolute;
-  max-width: 600px;
-  margin: 0 auto 0px;
-  padding: 45px;
-  text-align: center;
-}
-.form {
-  position: absolute;
-  z-index: 1;
-  background: #FFFFFF;
-  background-image: url("images/bg.jpg");
-  max-width: 600px;
-  margin: 0 auto 100px;
-  padding: 45px;
-  text-align: left;
-  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
-}
-.form input {
-  font-family: "Lato", sans-serif;
-  outline: 0;
-  background: #ffffff;
-  width: 100%;
-  border: 0;
-  margin: 0 0 15px;
-  padding: 15px;
-  box-sizing: border-box;
-  font-size: 14px;
-}
-.form button {
-  font-family: "Bitter", sans-serif;
-  text-transform: uppercase;
-  outline: 0;
-  background: #b8c076;
-  width: 100%;
-  border: 0;
-  padding: 15px;
-  color: #FFFFFF;
-  font-size: 14px;
-  -webkit-transition: all 0.3 ease;
-  transition: all 0.3 ease;
-  cursor: pointer;
-}
-.form button a {
-  font-family: "Bitter", sans-serif;
-  text-transform: uppercase;
-  outline: 0;
-  width: 100%;
-  border: 0;
-  padding: 15px;
-  color: #FFFFFF;
-  font-size: 14px;
-  -webkit-transition: all 0.3 ease;
-  transition: all 0.3 ease;
-  cursor: pointer;
-  text-decoration: none;
-}
-
-.form button:hover,.form button:active,.form button:focus {
-  background: #d3d7ae;
-}
-
-
-.form .message {
-  margin: 15px 0 0;
-  color: #3c323a;
-  font-size: 12px;
-}
-.form .message a {
-  color: #35b6be;
-  text-decoration: none;
-}
-.form .register-form {
-  display: none;
-}
-.container {
-  position: relative;
-  z-index: 1;
-  max-width: 300px;
-  margin: 0 auto;
-}
-.container:before, .container:after {
-  content: "";
-  display: block;
-  clear: both;
-}
-.container .info {
-  margin: 50px auto;
-  text-align: center;
-}
-.container .info h1 {
-  margin: 0 0 15px;
-  padding: 0;
-  font-size: 36px;
-  font-weight: 300;
-  color: #3c323a;
-}
-.container .info span {
-  color: #4d4d4d;
-  font-size: 12px;
-}
-.container .info span a {
-  color: #000000;
-  text-decoration: none;
-}
-.container .info span .fa {
-  color: #B8C172;
-}
-
-</style>       
-        
+		
+		<style>
+			#fileUpload1{
+				display: none;
+			}
+			#fileUpload2{
+				display: none;
+			}
+			#fileUpload3{
+				display: none;
+			}
+			#fileUpload4{
+				display: none;
+			}
+			#fileUpload5{
+				display: none;
+			}
+			#fileUpload6{
+				display: none;
+			}
+			#fileUpload7{
+				display: none;
+			}
+			#fileUpload8{
+				display: none;
+			}
+		</style>
     </head>
     <body>
         <div class="page">
             <div class="form">
     <?php if (login_check($mysqli) == true) : ?>
-                Treatment Team
-
-                Treatment team volunteers will have the opportunity to work hands-on with the patients at the Wildlife Center by assisting the veterinary staff with daily medical and diagnostic procedures. Tasks may include patient capture and restraint, weighing, administering medications, positioning patients for radiographs, and some laboratory work. No prior veterinary or animal handling experience is needed; the veterinary staff will provide all the necessary training and supervision. The first day will be spent in an orientation and observing patient care. Pre-exposure rabies vaccination is required to work with all juvenile and adult mammals. Responsibilities increase with experience and demonstrated commitment.
-
-                Requirements: Treatment team volunteers must be must be at least 18 years of age and able to commit to a minimum of one three-hour shift per month for one year. The morning treatment team shift is from 9 am-12 pm, the afternoon shift is from 3 pm-6 pm. Afternoon shifts are not available during the winter months. Space is limited to two volunteers per shift.
-
-                Availability and application: There are no treatment team positions available at this time.
-
-                <p>Return to your <a href="../protected-page.php">Volunteer Portal</a>.</p>
-                <p>Return to the <a href="../index.php">login page</a>.</p>
+		<center><img src="../images/text-logo-300.png"></center><br><br>
+        <h1>Treatment Team</h1>
+		<form action="../includes/Treatment-Team-Volunteer-Application.inc.php"
+			method="post"
+			enctype="multipart/form-data">
+				<label for="txtInterest1">Please describe any previous medical or veterinary training you have completed. *</label><br>
+				<textarea name="txtInterest1" class="interest" style="background-color:#ffffff;width:500px;font-size:12px;border:0px;padding:5px;color:#aea9a9;"></textarea><br>
+				<label for="txtInterest1">The case load at the Center can be unpredictable and vary greatly depending on the time of year.  Please describe the work environment that you work best in including how you best retain information that is taught to you.
+ *</label><br>
+				<textarea name="txtInterest2" class="interest" style="background-color:#ffffff;width:500px;font-size:12px;border:0px;padding:5px;color:#aea9a9;"></textarea><br>
+				<label for="txtInterest1">The Center admits many trauma cases from all over the state.  In order for a patient to be released back into the wild it must be able to successfully survive on its own in the wild free of chronic pain or debilitation.  Due to this fact, the Center does humanely euthanize patients that do not meet this standard.  Do you have personal experience with euthanasia and how does it affect you? *</label><br>
+				<textarea name="txtInterest3" class="interest" style="background-color:#ffffff;width:500px;font-size:12px;border:0px;padding:5px;color:#aea9a9;"></textarea><br>
+				<label for="txtInterest4">Taking care of animals is a messy job that requires all team members to clean out dirty crates, chop rats or mice for feeding to patients, and collect fecal samples for analysis for example.  Is this something that you foresee struggling with?
+				<textarea name="txtInterest4" class="interest" style="background-color:#ffffff;width:500px;font-size:12px;border:0px;padding:5px;color:#aea9a9;"></textarea><br></label><br>
+				<br>
+				
+				<h4>Additional Requirements</h4>
+				<h5>In order to be considered for a volunteer position, applicants must submit the following additional documents:</h5>
+				<ul>
+					<li>Resume or CV: This should include information about your education and relevant work history. </li>
+					<li>Letter of Recommendation: The letter should be sent directly from your reference.</li>
+				</ul>
+				<input type="file" name="resumeFile" id="resumeFile">
+				<input type="file" name="recommendFile" id="recommendFile" onchange="showFile1();">
+				<div id="fileUpload1">
+					<input type="file" name="file1" id="file1" onchange="showFile2();">
+				</div>
+				<div id="fileUpload2">
+					<input type="file" name="file2" id="file2" onchange="showFile3();">
+				</div>
+				<div id="fileUpload3">
+					<input type="file" name="file3" id="file3" onchange="showFile4();">
+				</div>
+				<div id="fileUpload4">
+					<input type="file" name="file4" id="file4" onchange="showFile5();">
+				</div>
+				<div id ="fileUpload5">
+					<input type="file" name="file5" id="file5" onchange="showFile6();">
+				</div>
+				<div id="fileUpload6">
+					<input type="file" name="file6" id="file6" onchange="showFile7();">
+				</div>
+				<div id="fileUpload7">
+					<input type="file" name="file7" id="file7" onchange="showFile8();">
+				</div>
+				<div id="fileUpload8">
+					<input type="file" name="file8" id="file8">
+				</div>
+				
+				
+				<input type="submit"
+					   value="Send Application"
+					   name="btnSend"
+					   class="btn btn-success"
+					   style="background-color:#b8c076;font-family: Bitter, sans-serif;text-transform: uppercase;color: #FFFFFF;cursor:pointer;"
+					   onclick="" />
+			
+			<?php
+			$email = $_SESSION['email'];
+				if ($stmt = $mysqli->prepare("SELECT volunteer
+					FROM members 
+						  WHERE email = ? LIMIT 1")) {
+				$stmt->bind_param('s', $email);  // Bind "$email" to parameter.
+				$stmt->execute();    // Execute the prepared query.
+				$stmt->store_result();
+				// get variables from result.
+				$stmt->bind_result($volunteer);
+				$stmt->fetch();
+				
+				if($volunteer == 1){
+					echo '<center><p>Return to your <a href="../protected-page.php">Volunteer Portal</a>.</p></center>';
+				} else {
+					echo '<center><p>Return to your <a href="../applicantPortal.php">Applicant Portal</a>.</p></center>';
+				}
+		    }
+			?>
+			<center><p>Return to the <a href="../index.php">Login Page</a>.</p></center>
+		</form>
+		<?php 
+		if (isset($_SESSION['showSuccess']) || isset($_SESSION['showSuccess'])){
+			if ($_SESSION['showSuccess'] == 1){
+				echo "<script type='text/javascript'>alert('Success submitting your Treatment Team Volunteer Application!')</script>";
+				$_SESSION['showSuccess'] = 0;
+			}
+			if ($_SESSION['showFailure'] == 1){
+				echo "<script type='text/javascript'>alert('Failure submitting your Treatment Team Volunteer Application.')</script>";
+				$_SESSION['showFailure'] = 0;
+			}
+		}
+    ?>
             </div>
         </div>
+		
+		<script>		
+			function showFile1(){
+				document.getElementById('fileUpload1').style.display = 'block';
+			}
+			function showFile2(){
+				document.getElementById('fileUpload2').style.display = 'block';
+			}
+			function showFile3(){
+				document.getElementById('fileUpload3').style.display = 'block';
+			}
+			function showFile4(){
+				document.getElementById('fileUpload4').style.display = 'block';
+			}
+			function showFile5(){
+				document.getElementById('fileUpload5').style.display = 'block';
+			}
+			function showFile6(){
+				document.getElementById('fileUpload6').style.display = 'block';
+			}
+			function showFile7(){
+				document.getElementById('fileUpload7').style.display = 'block';
+			}
+			function showFile8(){
+				document.getElementById('fileUpload8').style.display = 'block';
+			}
+		</script>
     <?php else : ?>
         <p>
             <span class="error">You are not authorized to access this page.</span> Please <a href="../index.php">login</a>.
