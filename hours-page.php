@@ -19,6 +19,22 @@ $user_id = $_SESSION['user_id'];
     <link href="css/responsive.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="styles/register.css">
     <script src="js/register.js"></script>
+
+<style>
+table {
+background-color:#b8c076;
+border:2px solid #b8c076;
+color: #3c323a;
+}
+
+
+th {
+border:1px solid #d3d7ae;
+padding:20px;
+background-color:#faf9e7;
+}
+</style>
+	
 </head>
 <body>
 <div class="page">
