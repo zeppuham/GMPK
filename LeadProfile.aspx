@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="VolunteerProfile.aspx.cs" Inherits="VolunteerProfile" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="LeadProfile.aspx.cs" Inherits="LeadProfile" %>
 
 <!DOCTYPE html>
 <html>

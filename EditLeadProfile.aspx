@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" AutoEventWireup="true" CodeFile="EditProfile.aspx.cs" Inherits="EditProfile" %>
+﻿<%@ Page Title="" Language="C#" AutoEventWireup="true" CodeFile="EditLeadProfile.aspx.cs" Inherits="EditLeadProfile" %>
 
 <!DOCTYPE html>
 <html>
